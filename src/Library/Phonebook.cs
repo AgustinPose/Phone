@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    public class Phonebook 
+    public class Phonebook
     {
         private List<Contact> persons;
         private WhatsAppChannel messageChannel;
@@ -40,14 +40,14 @@ namespace Library
             Contact person = new Contact(name);
             person.Phone = phone;
             person.Email = email;
-            
+
             this.persons.Add(person);
         }
 
-        public void RemoveContact(string name,string phone, string email)
+        public void RemoveContact(string name, string phone, string email)
         {
             // Esta podría ser una posible implementación para el método
-            foreach(Contact person in this.persons)
+            foreach (Contact person in this.persons)
             {
                 if (person.Name.Equals(name) && person.Phone.Equals(phone) && person.Email.Equals(email))
                 {
@@ -59,8 +59,19 @@ namespace Library
         // Se supone que SendMessage recibe el nombre del contacto y el texto a enviar
         public void SendMessage(string to, string text)
         {
-            var contactoToSend = Search(new string[] {to});
-            foreach(Contact contact in contactoToSend)
+            var contactsToSend = Search(new string[] { to });
+            foreach (Contact contact in contactsToSend)
+            {
+                Message message = messageChannel.CreateMessage(this.Owner, contact, text);
+                messageChannel.Send(message);
+            }
+        }
+
+
+        public void SendEmail(string to, string text)
+        {
+            var contactsToSend = Search(new string[] { to });
+            foreach (Contact contact in contactsToSend)
             {
                 Message message = messageChannel.CreateMessage(this.Owner, contact, text);
                 messageChannel.Send(message);
