@@ -16,10 +16,14 @@ namespace Program
             phonebook.AddContact("Santiago", "95401923", "santiago.leites@correo.ucu.edu.uy");
             phonebook.AddContact("Manu", "92505087", "manuela.guedez@correo.ucu.edu.uy");
 
-            phonebook.SendMessage( "Santiago", "hola, esto funciona por segunda vez");
+            phonebook.SendMessage( "Santiago", "SUIIII");
+
+            phonebook.SendEmail("Manu", "NO TENDRAS MIS DATOS!!!");
+            phonebook.SendEmail("Santiago", "NO TENDRAS MIS DATOS!!!");
+            
             // Enviar un correo a algunos contactos
 
-            // Enviar un WhatsApp a algunos contactos
+            // Enviar un WhatsApp a algunos contactos (TICK)
 
             // Enviar un SMS a algunos contactos
         }
