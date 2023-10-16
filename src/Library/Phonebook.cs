@@ -6,6 +6,8 @@ namespace Library
     {
         private List<Contact> persons;
         private WhatsAppChannel messageChannel;
+        private EmailChannel emailChannel = new EmailChannel();
+        private SMSChannel smsChannel = new SMSChannel();
 
         public Phonebook(Contact owner)
         {
@@ -73,10 +75,18 @@ namespace Library
             var contactsToSend = Search(new string[] { to });
             foreach (Contact contact in contactsToSend)
             {
-                Message message = messageChannel.CreateMessage(this.Owner, contact, text);
+                Message message = emailChannel.CreateEmail(this.Owner, contact, text);
                 messageChannel.Send(message);
             }
         }
-
+        public void SendSMS(string to, string text)
+        {
+            var contactsToSend = Search(new string[] { to });
+            foreach (Contact contact in contactsToSend)
+            {
+                Message message = smsChannel.CreateSMS(this.Owner, contact, text);
+                messageChannel.Send(message);
+            }
+        }
     }
 }

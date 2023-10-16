@@ -22,10 +22,7 @@ namespace Program
             phonebook.SendEmail("Manu", "NO TENDRAS MIS DATOS!!!");
             phonebook.SendEmail("Santiago", "NO TENDRAS MIS DATOS!!!");
             
-            // Enviar un correo a algunos contactos
-
-
-            // Enviar un SMS a algunos contactos
+            phonebook.SendSMS("Agustin", "NO TENDRAS MIS DATOS!!!");
         }
     }
 }
