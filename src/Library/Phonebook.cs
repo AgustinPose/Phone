@@ -57,12 +57,12 @@ namespace Library
         }
 
 // Se supone que SendMessage recibe el nombre del contacto y el texto a enviar
-        public void SendMessage(Contact from, string to, string text)
+        public void SendMessage(string to, string text)
         {
             var contactsToSend = Search(new string[] {to});
             foreach(Contact contact in contactsToSend)
             {
-                Message message = messageChannel.CreateMessage(from, contact, text);
+                Message message = messageChannel.CreateMessage(this.Owner, contact, text);
                 messageChannel.Send(message);
             }
         }
