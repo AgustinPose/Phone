@@ -17,9 +17,8 @@ namespace Program
             phonebook.AddContact("Manu", "92505087", "manuela.guedez@correo.ucu.edu.uy");
 
             phonebook.SendMessage( "Santiago", "hola, esto funciona por segunda vez");
-            // Enviar un correo a algunos contactos
 
-            // Enviar un WhatsApp a algunos contactos
+            // Enviar un correo a algunos contactos
 
             // Enviar un SMS a algunos contactos
         }
