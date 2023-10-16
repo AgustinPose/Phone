@@ -11,6 +11,7 @@ namespace Library
         {
             this.Owner = owner;
             this.persons = new List<Contact>();
+            messageChannel = new WhatsAppChannel();
         }
 
         public Contact Owner { get; }
