@@ -2,9 +2,10 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    public class Phonebook
+    public class Phonebook 
     {
         private List<Contact> persons;
+        private WhatsAppChannel messageChannel;
 
         public Phonebook(Contact owner)
         {
@@ -54,9 +55,16 @@ namespace Library
             }
         }
 
-        public void SendMessage()
+// Se supone que SendMessage recibe el nombre del contacto y el texto a enviar
+        public void SendMessage(Contact from, string to, string text)
         {
-            
+            var contactsToSend = Search(new string[] {to});
+            foreach(Contact contact in contactsToSend)
+            {
+                Message message = messageChannel.CreateMessage(from, contact, text);
+                messageChannel.Send(message);
+            }
         }
+
     }
 }

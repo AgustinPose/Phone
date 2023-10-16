@@ -1,13 +1,21 @@
-namespace Library;
-public class WhatsAppChannel : IMessageChannel
+using System.Globalization;
+using System;
+using WhatsAppApiUCU;
+namespace Library
 {
-    public void Send(Message message)
+    public class WhatsAppChannel : IMessageChannel
     {
+        public void Send(Message message)
+        {
+            WhatsAppApi whatsApp = new WhatsAppApi();
+            string toSend = "+598" + message.To;
+            whatsApp.Send(toSend, message.Text);
+        }
 
-    }
+        public Message CreateMessage(Contact from, Contact to, string text)
+        {
+            return new WhatsAppMessage(to, text);
+        }
 
-    public Message CreateMessage(Contact from, Contact to)
-    {
-        return new WhatsAppMessage(to);
     }
 }
